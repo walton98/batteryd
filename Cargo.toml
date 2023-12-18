@@ -1,0 +1,11 @@
+[package]
+name = "battery"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+futures = "0.3.29"
+futures-time = "3.0.0"
+libnotify = "1"
+upower_dbus = "0.3.2"
+zbus = "3.14.1"
