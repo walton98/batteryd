@@ -9,6 +9,7 @@ use crate::alerter::{BatteryAlerter, Config};
 async fn run() {
     notify::init("battery_alerter");
     let upower = alerter::init().await.unwrap();
+    let battery = upower.get_display_device().await.unwrap();
 
     let config = Config {
         alert_threshold: 10.into(),
@@ -16,7 +17,7 @@ async fn run() {
         long_sleep: Duration::from_secs(10),
     };
 
-    BatteryAlerter::new(upower, config).await.start().await;
+    BatteryAlerter::new(battery, config).start().await;
 }
 
 fn main() {
