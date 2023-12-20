@@ -1,0 +1,11 @@
+[Unit]
+Description=Battery monitor daemon
+
+[Service]
+Type=simple
+ExecStart=batteryd
+Restart=on-failure
+RestartSec=1
+
+[Install]
+WantedBy=default.target
