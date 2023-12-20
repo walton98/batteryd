@@ -31,13 +31,16 @@ impl BatteryAlerter {
 
     pub async fn start(&self) {
         loop {
+            log::info!("Waiting for discharge");
             self.wait_for_discharging().await;
             let percent_fut = Box::pin(self.wait_for_percentage());
             let charge_fut = Box::pin(self.wait_for_charging());
+            log::info!("Waiting for low battery");
             match select(percent_fut, charge_fut).await {
                 Either::Left((_, charge_fut)) => {
                     let notification = notify::low_battery_notification();
                     notify::show(&notification).unwrap();
+                    log::info!("Waiting for charge");
                     charge_fut.await;
                     let _ = notification.close();
                 }
