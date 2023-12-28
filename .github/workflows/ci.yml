@@ -1,4 +1,4 @@
-name: Rust
+name: Battery Monitor CI
 
 on:
   push:
