@@ -4,6 +4,8 @@ Simple script to alert when battery is low.
 
 Requires libnotify and upower.
 
+[![Battery Monitor CI](https://github.com/walton98/batteryd/actions/workflows/ci.yml/badge.svg)](https://github.com/walton98/batteryd/actions/workflows/ci.yml)
+
 ## Install
 
 ```
